@@ -1,39 +1,34 @@
 # Ashfall Survivors updates
 
-Signed game-content updates for the Ashfall Survivors Windows launcher.
+## Install the current game update
 
-## Update your game
+Open the existing Windows launcher, then choose **CHECK FOR UPDATES → INSTALL UPDATE → PLAY**.
 
-Paste this address into the launcher's feed field, choose **SAVE FEED**, then **CHECK FOR UPDATES → INSTALL UPDATE → PLAY**:
+If a feed is not set, paste this address and choose **SAVE FEED**:
 
 ```text
 https://raw.githubusercontent.com/Keiaka/ashfall-updates/main/manifest.json
 ```
 
-The launcher must already be installed. No manual ZIP extraction is needed for game updates.
+## Current release: 0.4.0 (build 4)
 
-## Current release: 0.3.0 (build 3)
+Ashfall 0.4.0 — Class Campaign
+- Pre-run Class Archive: inspect all six classes, their talents, class upgrades and general upgrades.
+- Six permanent class levels (cap 25), with 72 talent nodes: three branches, four tiers per class, ranked nodes, prerequisites and capstones. One point per class level after level 1; free respec between runs. Talents are read-only during runs.
+- Result-screen class XP breakdown: 1 XP per 10 kills, 1 XP per 6 survival seconds (up to 15 minutes), 100 per mini-boss, 300 per final boss. Defeat and abandonment still award earned XP. Closing mid-run does not finalize XP.
+- Mini-bosses at 4:00, 7:00, 10:00 and 12:00; final Warden at 15:00. Normal wave spawning stops at 15:00 so remaining enemies and bosses can be finished.
+- Eight gear slots: Helmet, Shoulders, Chestplate, Legs, Boots, Hands, Wrists, Weapon. Class-compatible one- and two-handed weapon options; shared armour and separate retained weapons for each class.
+- Mini-boss loot chances: 70%, 78%, 85%, 90%; Warden 100%. Gear tiers T1-T5 grow with encounter tier, with improving rarity odds. Warden gear is Epic or better. A rolled drop is not necessarily stronger than equipped gear.
+- Victory banks equipped gear; defeat/abandon loses new gear and forging, while preserving previous banked items. Existing v0.3 equipment migrates without deleting its old save.
+- 36 class upgrade lines including class-only damage, projectiles/chains/echoes/blades/totems, range, cast speed and status effects.
+- Four DISTINCT class lines per run: repeats improve the same line. Once four are selected, no new class lines or gems appear, including unchosen lines from the same class. General upgrades use no slots. Three active skill families maximum.
+- J journal includes a toggle between global totals and actual class skill totals.
+- Swept projectile collision fixes missed point-blank hits at lower frame rates.
 
-Ashfall 0.3.0 — The Covenant
-- 15-minute runs; Warden arrives at 15:00.
-- Tilted ground perspective, animated heroes/enemies, cloth motion, flickering lights and impact particles.
-- 24 passive talents in four branches; two starting points and another every four levels.
-- Six upgrade rarities: Common, Uncommon, Rare, Epic, Legendary, Unique.
-- Movement rolls: 1%, 3%, 5%, 8%, 12%, 16% of base movement speed.
-- J opens your run journal: every selected upgrade, rarity and bonus, plus current stat totals.
-- Victory banks your equipped loadout and forging. Defeat, abandonment or closing loses this run's changes; the previous bank survives.
-- Enemy HP and damage increase over time. The final boss scales with level, banked gear and estimated build damage, and attacks faster below half health.
-- Existing mastery/settings retained. New relic bank starts empty. Run upgrades and talents still reset each run.
-- Blade Halo now hits enemies inside the orbit, fixing its point-blank dead zone.
+See [the full game guide](GUIDE.md) for class progression, gear probabilities, controls, migration and editing instructions.
 
-## Controls and persistence
+## Validation
 
-**J** opens the upgrade journal, **T** the passive tree, and **B** equipment. Victory banks the five currently equipped slots. This is a retained loadout, not an unlimited stash. Previous mastery/settings remain usable; the new relic bank begins empty. Talents and level-up bonuses reset each run.
+Automated checks cover permanent class XP and repeat-award prevention, all talent ranks/prerequisites, respec and in-run edit rejection, four-line pool locking, class modifier isolation, exact boss timers, gear compatibility, victory/death banking, legacy migration, failed-save refunds and point-blank projectile collision. Six long simulations completed using seeded four-line builds, invulnerability and automatic XP pickup; these are stability checks, not human difficulty measurements. UI and exported game pack tested with Godot 4.3 on Linux. Windows-specific execution remains to be playtested.
 
-The boss arrives at 15:00 and combat may continue afterward. Rarity rates are 48%, 27%, 15%, 7%, 2.5%, 0.5%. Unique is the highest numeric upgrade roll, once per upgrade type per run. Equipment retains its separate existing item tiers.
-
-## Verification
-
-Automated checks cover rarity distribution and values, all 24 talents/prerequisites, journal records, skill-slot limits, bank persistence on victory/death/abandon/crafting, progressive health/damage, boss timing/scaling and Blade Halo's point-blank coverage. Long-run tests use invulnerability to verify simulation stability, not human difficulty. UI screens checked on Godot 4.3 Linux; Windows execution has not been tested in this environment.
-
-Only public game packs and signed manifests belong here. Never commit signing credentials. The current launcher supports Godot 4.3 game packs; engine/launcher upgrades may need a new installer.
+Only public game packs, signed manifests and game documentation belong here. Never commit signing credentials. The pinned launcher supports Godot 4.3 packs; engine/launcher changes may require a separate installer. Old versioned packs remain available for rollback.
